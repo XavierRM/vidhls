@@ -4,6 +4,6 @@ ThisBuild / scalaVersion := "3.3.5"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "vidapi-scala",
+    name := "vidapi",
     idePackagePrefix := Some("com.xrm")
   )
