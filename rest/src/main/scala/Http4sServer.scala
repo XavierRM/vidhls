@@ -5,8 +5,8 @@ import com.comcast.ip4s.*
 import org.http4s.*
 import org.http4s.dsl.io.*
 import org.http4s.ember.server.*
-import org.http4s.server.Router
 import org.http4s.implicits.*
+import org.http4s.server.Router
 
 object Http4sServer extends IOApp.Simple {
 
