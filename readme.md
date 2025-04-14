@@ -39,3 +39,32 @@ force
 to always have 3 segments in memory before playing the media. Alternatives that solve some of the problems are LL-HLS
 and
 Apple LL-HLS. Switching from RTMP to WebRTC might also improve the viewing experience.
+
+### Playlist definition
+
+- MUST be UTF-8 encoded.
+- MUST be Unicode normalized
+- Each line represents something, having the newline character be the divider.
+    - Blank lines are ignored.
+    - Lines starting with **"#"** are comments or tags, whitespaces MUST NOT be present, unless explicitly expressed.
+- Tags begin with **"#EXT"**, they are case-sensitive, all other lines starting with **"#"** are comments and should be
+  ignored.
+- A URI line identifies a **Media Segment** or another **Playlist file**.
+- A **Media segment** is specified by a URI and the tags that apply to it.
+- A **Playlist** is a **Master Playlist** if all URI lines in the **Playlist** identify **Media Playlists**.
+- A **Playlist** is invalid if it isn't a **Media Playlist** or a **Master Playlist**.
+- A URI, whether it is a URI line or part of a tag, MAY be relative. Any relative URI is considered to be relative to
+  the
+  URI of the **Playlist** that contains it.
+- The segment **bit rate** of a **Media Playlist** is the size of the **Media segment** divided by its **EXTINF**
+  duration.
+- The peak segment **bit rate** of a **Media Playlist** is the largest **bit rate** of any contiguous set of segments
+  whose
+  total duration is between 0.5 and 1.5 times the target duration. The **bit rate** of a set is calculated by dividing
+  the
+  sum of the segment sizes by the sum of the segment durations.
+- The average segment **bit rate** of a **Media Playlist** is the sum of the sizes (in bits) of every **Media Segment**
+  in
+  the **Media Playlist**, divided by its duration. Note that this includes container overhead, but not HTTP or other
+  overhead
+  imposed by the delivery system.
