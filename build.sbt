@@ -5,7 +5,7 @@ ThisBuild / scalaVersion := "3.3.5"
 lazy val global = project
   .in(file("."))
   .settings(
-    name := "vid"
+    name := "vidhls"
   )
   .aggregate(
     api,
